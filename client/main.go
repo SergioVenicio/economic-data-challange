@@ -20,7 +20,7 @@ type CurrencyResponse struct {
 
 func init() {
 	_, err := os.Stat("./cotacao.txt")
-	if err != nil {
+	if err == nil {
 		return
 	}
 	os.Create("./cotacao.txt")

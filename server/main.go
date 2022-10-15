@@ -112,9 +112,6 @@ func SaveCurrencyData(db *sql.DB, c *CurrencyData) {
 		c.Timestamp,
 		c.CreateDate,
 	)
-	if err != nil {
-		panic(err)
-	}
 }
 
 func init() {
