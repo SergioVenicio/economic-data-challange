@@ -93,9 +93,10 @@ func SaveCurrencyData(db *sql.DB, c *CurrencyData) {
 			currencies
 			(code, codein, name, high, low, varBid, pctChange, bid, ask, timestamp, create_date)
 			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-	stmt, err := db.Prepare(insertStr)
+	stmt, err := db.PrepareContext(ctx, insertStr)
 	if err != nil {
-		panic(err)
+		log.New(os.Stdout, "ERROR:", log.Ldate|log.Ltime).Panicln(err.Error())
+		return
 	}
 
 	stmt.ExecContext(
