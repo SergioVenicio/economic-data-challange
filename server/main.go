@@ -98,6 +98,7 @@ func SaveCurrencyData(db *sql.DB, c *CurrencyData) {
 		log.New(os.Stdout, "ERROR:", log.Ldate|log.Ltime).Panicln(err.Error())
 		return
 	}
+	defer stmt.Close()
 
 	stmt.ExecContext(
 		ctx,
